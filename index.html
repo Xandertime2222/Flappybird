@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Flappy Clone</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#111111" />
+</head>
+<body>
+  <main class="wrap">
+    <canvas id="game" width="420" height="720" aria-label="Flappy Game"></canvas>
+
+    <div class="hud">
+      <div class="row">
+        <span id="score">0</span>
+        <span class="sep">·</span>
+        <span>Best: <span id="best">0</span></span>
+      </div>
+      <div class="row small">
+        <span>Space / Click / Tap</span>
+        <span class="sep">·</span>
+        <span>R = Neustart</span>
+      </div>
+    </div>
+
+    <div id="overlay" class="overlay">
+      <div class="card">
+        <h1>Flappy Clone</h1>
+        <p class="muted">Drücke <b>Space</b> oder tippe, um zu starten.</p>
+        <button id="startBtn">Start</button>
+        <p class="muted tiny">Hinweis: Dieses Spiel läuft komplett im Browser.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="game.js"></script>
+  <script>
+    // Service Worker registrieren (Offline-Cache)
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
